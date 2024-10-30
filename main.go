@@ -41,7 +41,8 @@ func LambdaExcuter(ctx context.Context, event events.CognitoEventUserPoolsPostCo
 		fmt.Println("Error reading secret from AWS Secret Manager: " + err.Error())
 		return event, err
 	}
-	return event, nil
+	err = bd.SignUp(data)
+	return event, err
 }
 
 func ParameterValidation() bool {
